@@ -1,8 +1,8 @@
 # Creates distributed cdh5
 #
-# docker build -t jamesmo/hregionserver:cdh5 .
+# docker build -t supermy/cloud-hregionserver:cdh5 .
 
-FROM jamesmo/hbase:cdh5
+FROM supermy/cloud-hbase:cdh5
 MAINTAINER james mo <springclick@gmail.com>
 
 # config hbase
@@ -13,17 +13,17 @@ ADD regionservers /etc/hbase/conf/regionservers
 
 #hive-hbase-init
 ADD pre-start-hive.sh /home/jamesmo/pre-start-hive.sh
-ADD start-hive.sh /home/jamesmo/start-hive.sh
-ADD hbase-init.rb /home/jamesmo/hbase-init.rb
+ADD start-hive.sh /home/supermy/start-hive.sh
+ADD hbase-init.rb /home/supermy/hbase-init.rb
 
-ADD hive-init.sql /home/jamesmo/hive-init.sql
-#ADD hbase-init.sql /home/jamesmo/hbase-init.sql
+ADD hive-init.sql /home/supermy/hive-init.sql
+#ADD hbase-init.sql /home/supermy/hbase-init.sql
 
-RUN chmod a+x /home/jamesmo/start-hive.sh
-RUN chmod a+xr /home/jamesmo/hbase-init.rb
-RUN chmod a+x /home/jamesmo/pre-start-hive.sh
+RUN chmod a+x /home/supermy/start-hive.sh
+RUN chmod a+xr /home/supermy/hbase-init.rb
+RUN chmod a+x /home/supermy/pre-start-hive.sh
 
-#COPY gndata /home/jamesmo/
+#COPY gndata /home/supermy/
 
 #hive-end
 
@@ -35,9 +35,9 @@ ADD hadoop-env.sh /etc/hadoop/conf/hadoop-env.sh
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # start hbase
-ADD pre-start-hbase.sh /home/jamesmo/pre-start-hbase.sh
-RUN chmod a+x /home/jamesmo/pre-start-hbase.sh
+ADD pre-start-hbase.sh /home/supermy/pre-start-hbase.sh
+RUN chmod a+x /home/supermy/pre-start-hbase.sh
 
-ENTRYPOINT /home/jamesmo/pre-start-hbase.sh && /home/jamesmo/pre-start-hive.sh
+ENTRYPOINT /home/supermy/pre-start-hbase.sh && /home/supermy/pre-start-hive.sh
 
 EXPOSE 60020 60030
