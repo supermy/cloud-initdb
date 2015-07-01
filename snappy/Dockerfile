@@ -23,7 +23,7 @@ RUN chmod a+x /home/jamesmo/start-hive.sh
 RUN chmod a+xr /home/jamesmo/hbase-init.rb
 RUN chmod a+x /home/jamesmo/pre-start-hive.sh
 
-COPY gndata /home/jamesmo/
+#COPY gndata /home/jamesmo/
 #hive-end
 
 # config hadoop client
